@@ -1,0 +1,21 @@
+{
+  "name": "dothanhlam.github.io",
+  "version": "1.0.0",
+  "homepage": "https://github.com/dothanhlam/dothanhlam.github.io",
+  "authors": [
+    "Lam Do <dothanhlam@gmail.com>"
+  ],
+  "description": "Lam Do presentation slides",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "reveal-js": "~2.6.2"
+  }
+}

@@ -1,0 +1,234 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <title>React</title>
+    <link href="assets/css/ionic.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/keypoint.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/prettify.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/slides.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+
+<div id="menu-btn" class="logo"></div>
+
+<div id="wrapper"></div>
+
+<div id="slides">
+
+    <section>
+        <img src="assets/image/react.png" style="max-height: 30%"/>
+        <h1>Introduction to React</h1>
+        <p>@dothanhlam</p>
+    </section>
+
+    <section class="bg">
+        <img src="assets/image/gravatar.jpeg" style="width:150px;height:150px;border-radius:50%"/>
+        <div class="speaker-info">
+            <p><i class="icon ion-person"></i>Lam Do</p>
+            <p><i class="icon ion-location"></i>Ho Chi Minh City, Vietnam</p>
+            <p><i class="icon ion-social-twitter"></i>@dothanhlam</p>
+            <p><i class="icon ion-social-rss"></i>http://dothanhlam.wordpress.com</p>
+            <p><i class="icon ion-social-github"></i>https://github.com/dothanhlam</p>
+        </div>
+    </section>
+
+    <section>
+        <img src="assets/image/react.png" style="max-height: 30%"/>
+        <h2>A library for creating user interfaces</h2>
+    </section>
+
+
+    <section>
+        <h1>Is it another case of ...</h1>
+        <p>My MVC is better than your MVC</p>
+        <p class="build">My MVVM is better than your MVC</p>
+        <p class="build">My MVC is better than your MVVM</p>
+    </section>
+
+    <section>
+        <p><strong>React</strong> challenges established best practices in traditional MV* frameworks</p>
+    </section>
+
+    <section>
+        <h1>Traditional MV* Frameworks</h1>
+        <h2>Separation of Concerns</h2>
+        <div class="horizontal padding-top" style="width: 100%">
+            <div>
+                <div class="box">
+                    Model
+                </div>
+                <div class="medium-text" style="text-align: center;width: 100%;color:#62DEFB">Data</div>
+            </div>
+            <div>
+                <div class="box">
+                    Controller
+                </div>
+                <div class="medium-text" style="text-align: center;width: 100%;color:#62DEFB">
+                    Display logic (JavaScript)
+                </div>
+            </div>
+            <div>
+                <div class="box">
+                    ModelView
+                </div>
+                <div class="medium-text" style="text-align: center;width: 100%;color:#62DEFB">
+                    Tailored Data
+                </div>
+            </div>
+            <div>
+                <div class="box">
+                    View
+                </div>
+                <div class="medium-text" style="text-align: center;width: 100%;color:#62DEFB">
+                    Templates (HTML + custom extensions)
+                </div>
+            </div>
+        </div>
+        <p class="build">Controller, ModelView, and View <strong>are</strong> coupled:<br/>when you change one, you often have to change the others</p>
+    </section>
+
+    <section>
+        <table>
+            <tr><td></td><td><strong>Templates</strong></td><td><strong>React Components</strong></td></tr>
+            <tr><td><strong>Separation of Concerns</strong></td><td>Technology<br/><span class="medium-text">(JS, HTML)</span></td><td>Responsibility<br/><span class="medium-text">"Display UI"</span></td></tr>
+            <tr><td><strong>Semantic</strong></td><td>New concepts and micro-languages<br/><span class="medium-text">(scope, directives, iterators)</span></td><td>HTML and JavaScript</td></tr>
+            <tr><td><strong>Expressiveness</strong></td><td>Underpowered</td><td>Full power of JavaScript</td></tr>
+        </table>
+    </section>
+
+
+    <section>
+        <h1>Build components, not templates</h1>
+        <ul class="padding-top">
+            <li>UI Components are the cohesive units</li>
+            <li>UI description and UI logic <strong>are</strong> tightly coupled and can be colocated<br/><span class="medium-text">(They shouldn't be arbitrarily decoupled)</span></li>
+            <li>Full power of JavaScript to express UI</li>
+        </ul>
+    </section>
+
+    <section>
+        <h1>Creating the UI Description</h1>
+<pre class="prettyprint small">var child1 = React.createElement('li', null, 'First Text Content');
+var child2 = React.createElement('li', null, 'Second Text Content');
+var root = React.createElement('ul', { className: 'my-list' }, child1, child2);
+React.render(root, document.getElementById('example'));
+</pre>
+    </section>
+
+    <section>
+        <h1>JSX</h1>
+        <ul class="padding-top">
+            <li>Optional HTML-like markup</li>
+            <li>Declarative description of the UI inlined in JS code</li>
+            <li>Combines ease-of-use of templates with power of JavaScript</li>
+            <li>Preprocessor translates to plain JavaScript:
+                <ul>
+                    <li>On the fly (suitable during development)</li>
+                    <li>Offline using the React CLI</li>
+                </ul>
+            </li>
+        </ul>
+    </section>
+
+    <section>
+        <h1>JSX</h1>
+        <xmp class="prettyprint" style="margin-top:2rem;">var Header = React.createClass({
+            render: function () {
+            return (
+            <h1>Employee Directory</h1>
+            );
+            }
+            });</xmp>
+    </section>
+
+    <section>
+        <h1>Traditional Performance Best Practices</h1>
+        <ul class="padding-top">
+            <li>Avoid expensive DOM operations</li>
+            <li>Minimize access to the DOM</li>
+            <li>Update elements offline before reinserting into the DOM</li>
+            <li>Avoid tweaking layouts in JavaScript</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>But should the app developer be responsible for low-level DOM optimizations?</h2>
+    </section>
+
+    <section>
+        <h1>React</h1>
+        <h2 class="padding-top">Re-render everything on every update</h2>
+    </section>
+
+    <section>
+        <h1>Sounds Expensive?</h1>
+    </section>
+
+    <section>
+        <h1>Virtual DOM</h1>
+        <p>Re-render everything on every update:</p>
+        <ol>
+            <li class="build">Create lightweight description of component UI</li>
+            <li class="build">Diff it with the old one</li>
+            <li class="build">Compute minimal set of changes to apply to the DOM</li>
+            <li class="build">Batch execute all updates</li>
+        </ol>
+    </section>
+
+    <section>
+        <h1>Virtual DOM Benefits</h1>
+        <ol class="padding-top">
+            <li><strong>Clean</strong><br/>Clear, descriptive programming model</li>
+            <li><strong>Fast</strong><br/>Optimized DOM updates and less reflows</li>
+        </ol>
+    </section>
+
+
+    <section>
+        <h1>Resources</h1>
+        <ul>
+            <li><a href="https://facebook.github.io/react/docs/tutorial.html">React Tutorial</a></li>
+            <li><a href="https://www.youtube.com/watch?v=x7cQ3mrcKaY">Rethinking best practices</a></li>
+            <li><a href="https://www.youtube.com/watch?v=h3KksH8gfcQ">Secrets of the Virtual DOM</a></li>
+            <li><a href="https://facebook.github.io/react/docs/thinking-in-react.html">Thinking in React</a></li>
+            <li><a href="http://coenraets.org/blog/2015/03/real-time-trader-desktop-with-react-node-js-and-socket-io/">Trader Desktop</a></li>
+            <li><a href="http://coenraets.org/blog/2015/01/belgian-beer-explorer-with-react-bootstrap-node-js-and-postgres/">Beer Explorer</a></li>
+            <li><a href="http://coenraets.org/blog/2014/12/sample-mobile-application-with-react-and-cordova/">Employee Directory</a></li>
+        </ul>
+    </section>
+
+    <section>
+        <h1>Thank You!</h1>
+    </section>
+
+
+</div> <!-- end of '#slides' -->
+
+<!--<button id="menu-btn" class="button button-clear icon ion-navicon"></button>-->
+
+<div id="menu" class="dark-bg">
+    <div class="title">Keypoint</div>
+    <div class="scroller cf">
+        <ol id="list" class="list"></ol>
+    </div>
+</div>
+
+<div id="build-btn-right" style="position: absolute;bottom:0; right:0; width: 150px; height: 150px;border:solid 0px;z-index:100;"></div>
+<div id="build-btn-left" style="position: absolute;bottom:0; left:0; width: 150px; height: 150px;border:solid 0px;z-index:100"></div>
+
+</div>
+
+<script src="lib/jquery.js"></script>
+<script src="lib/fastclick.js"></script>
+<script src="lib/prettify.js"></script>
+<script src="lib/swipeview.js"></script>
+
+<script src="js/keypoint.js"></script>
+<script src="js/slides.js"></script>
+
+</body>
+</html>
