@@ -357,7 +357,7 @@ td:first-child {
 
 .topcoat-spinner,
 #wrapper > div > .swipeview-loading {
-    background: url("../img/spinner.png");
+    background: url("../image/spinner.png");
     background-position: center;
     background-repeat: no-repeat;
     -webkit-animation: spinner 1s infinite linear;
