@@ -50,151 +50,61 @@
         <p>Everything is a <strong>Component</strong></p>
         <p class="build">Build <strong>component</strong>, not template</p>
         <p class="build">not a <strong>framework</strong>, neither an <strong>architecture</strong></p>
+        <p class="build">Re-render everything on every update</p>
+        <p class="build">Fast <strong>virtual DOM</strong></p>
     </section>
     <section>
-        <h1>Separation of Concerns (SoC)</h1>
-        <p>Reduce <strong>coupling</strong>, increase <strong>cohesion</strong></p>
+        <h1 class="build">Build <strong>component</strong>, not template</h1>
+        <p class="build">Combine <strong>DOM generation</strong> and <strong>display logic</strong></p>
+        <p class="build">Transform <strong>data</strong> into <strong>interface components</strong></p>
+        <p class="build"><strong>Data</strong> can come from <strong>anywhere</strong></p>
     </section>
     <section>
-        <h1>Templates</h1>
-        <p>encourage a poor separation of concerns</p>
-        <p class="build">Angular style directive</p>
+        <h1>First glance</h1>
+        <xmp class="prettyprint small">var HelloWorld = React.createClass({
+    render: function() {
+        return
+            (<div>{'Hello, ' + this.props.name}</div>);
+    }
+});
+React.renderComponent(<Hello name="Raw Oyster" />, document.body);
+        </xmp>
     </section>
-    <section>
-        <h1>View Model</h1>
-        <p>Tightly couples template to display logic</p>
-        <pre class="prettyprint small">[{"price":"69.69", "product":"Raw Oyster", "tableRowColour": "#696969"}]</pre>
-    </section>
-    <section>
-        <h1>Display logic and markup</h1>
-        <p>Inevitably<>tightly coupled</p>
-        <p class="build">highly cohesive</p>
-    </section>
-    <section>
-        
-    </section>
-    <section>
-        <h1>Single Source of Truth</h1>
-        <p>Provide data that is authentic, relevant, and referable</p>
-    </section>
-    <!--<section>
-        <h1>Traditional MV* Frameworks</h1>
-        <h2>Separation of Concerns</h2>
-        <div class="horizontal padding-top" style="width: 100%">
-            <div>
-                <div class="box">
-                    Model
-                </div>
-                <div class="medium-text" style="text-align: center;width: 100%;color:#62DEFB">Data</div>
-            </div>
-            <div>
-                <div class="box">
-                    Controller
-                </div>
-                <div class="medium-text" style="text-align: center;width: 100%;color:#62DEFB">
-                    Display logic (JavaScript)
-                </div>
-            </div>
-            <div>
-                <div class="box">
-                    ModelView
-                </div>
-                <div class="medium-text" style="text-align: center;width: 100%;color:#62DEFB">
-                    Tailored Data
-                </div>
-            </div>
-            <div>
-                <div class="box">
-                    View
-                </div>
-                <div class="medium-text" style="text-align: center;width: 100%;color:#62DEFB">
-                    Templates (HTML + custom extensions)
-                </div>
-            </div>
-        </div>
-        <p class="build">Controller, ModelView, and View <strong>are</strong> coupled:<br/>when you change one, you often have to change the others</p>
-    </section>
-
-    <section>
-        <table>
-            <tr><td></td><td><strong>Templates</strong></td><td><strong>React Components</strong></td></tr>
-            <tr><td><strong>Separation of Concerns</strong></td><td>Technology<br/><span class="medium-text">(JS, HTML)</span></td><td>Responsibility<br/><span class="medium-text">"Display UI"</span></td></tr>
-            <tr><td><strong>Semantic</strong></td><td>New concepts and micro-languages<br/><span class="medium-text">(scope, directives, iterators)</span></td><td>HTML and JavaScript</td></tr>
-            <tr><td><strong>Expressiveness</strong></td><td>Underpowered</td><td>Full power of JavaScript</td></tr>
-        </table>
-    </section>
-
-
-    <section>
-        <h1>Build components, not templates</h1>
-        <ul class="padding-top">
-            <li>UI Components are the cohesive units</li>
-            <li>UI description and UI logic <strong>are</strong> tightly coupled and can be colocated<br/><span class="medium-text">(They shouldn't be arbitrarily decoupled)</span></li>
-            <li>Full power of JavaScript to express UI</li>
-        </ul>
-    </section>
-
-    <section>
-        <h1>Creating the UI Description</h1>
-<pre class="prettyprint small">var child1 = React.createElement('li', null, 'First Text Content');
-var child2 = React.createElement('li', null, 'Second Text Content');
-var root = React.createElement('ul', { className: 'my-list' }, child1, child2);
-React.render(root, document.getElementById('example'));
-</pre>
-    </section>
-
     <section>
         <h1>JSX</h1>
         <ul class="padding-top">
-            <li>Optional HTML-like markup</li>
-            <li>Declarative description of the UI inlined in JS code</li>
-            <li>Combines ease-of-use of templates with power of JavaScript</li>
-            <li>Preprocessor translates to plain JavaScript:
+            <li class="build">Optional HTML-like markup</li>
+            <li class="build">Declarative description of the UI inlined in JS code</li>
+            <li class="build">Combines ease-of-use of templates with power of JavaScript</li>
+            <li class="build">Preprocessor translates to plain JavaScript:
                 <ul>
-                    <li>On the fly (suitable during development)</li>
-                    <li>Offline using the React CLI</li>
+                    <li class="build">On the fly (suitable during development)</li>
+                    <li class="build">Offline using the React CLI</li>
                 </ul>
             </li>
         </ul>
     </section>
-
     <section>
-        <h1>JSX</h1>
+        <h1>JSX - a glance</h1>
         <xmp class="prettyprint" style="margin-top:2rem;">var Header = React.createClass({
-            render: function () {
-            return (
-            <h1>Employee Directory</h1>
-            );
-            }
-            });</xmp>
+    render: function () {
+            return (<h1>Employee Directory</h1>);
+    }
+    // other
+    React.DOM.h1({}, 'Employee Directory');
+});</xmp>
     </section>
-
     <section>
         <h1>Traditional Performance Best Practices</h1>
         <ul class="padding-top">
-            <li>Avoid expensive DOM operations</li>
-            <li>Minimize access to the DOM</li>
-            <li>Update elements offline before reinserting into the DOM</li>
-            <li>Avoid tweaking layouts in JavaScript</li>
+            <li class="build">Avoid expensive DOM operations</li>
+            <li class="build">Minimize access to the DOM</li>
+            <li class="build">Update elements offline before reinserting into the DOM</li>
+            <li class="build">Avoid tweaking layouts in JavaScript</li>
         </ul>
     </section>
-
     <section>
-        <h2>But should the app developer be responsible for low-level DOM optimizations?</h2>
-    </section>
-
-    <section>
-        <h1>React</h1>
-        <h2 class="padding-top">Re-render everything on every update</h2>
-    </section>
-
-    <section>
-        <h1>Sounds Expensive?</h1>
-    </section>
-
-    <section>
-        <h1>Virtual DOM</h1>
-        <p>Re-render everything on every update:</p>
+        <h1>Re-render everything on every update</h1>
         <ol>
             <li class="build">Create lightweight description of component UI</li>
             <li class="build">Diff it with the old one</li>
@@ -202,16 +112,260 @@ React.render(root, document.getElementById('example'));
             <li class="build">Batch execute all updates</li>
         </ol>
     </section>
-
+    <section>
+        <h1>Still confusing?</h1>
+        <p class="build">React builds a new <strong>virtual DOM</strong> subtree</p>
+    </section>
+    <section>
+        <h1>We just saw the term <strong>Virtual DOM</strong></h1>
+    </section>
+    <section>
+        <h1>Virtual DOM</h1>
+        <p class="build">It's pure JavaScript, in-memory representation of the DOM</p>
+        <p class="build">render() fires whenever something changes</p>
+        <p class="build">React modifies the real DOM to match</p>
+        <p class="build"><strong>Fast</strong>, fast and fast</p>
+    </section>
+    <section>
+        <h1>How about actual DOM ?</h1>
+        <pre class="prettyprint small">this.getDOMNode();</pre>
+    </section>
+    <section>
+        <h1>We just say virtual DOM fast</h1>
+        <p class="build">DOM is slow</p>
+        <p class="build">Computes minimal DOM operations</p>
+        <p class="build">Batched reads and writes for optimal DOM performance</p>
+        <p class="build">Usually faster than manual DOM operations</p>
+        <p class="build">Automatic top-level event delegation</p>
+        <p class="build">Provides hooks for custom update logic</p>
+    </section>
     <section>
         <h1>Virtual DOM Benefits</h1>
         <ol class="padding-top">
-            <li><strong>Clean</strong><br/>Clear, descriptive programming model</li>
-            <li><strong>Fast</strong><br/>Optimized DOM updates and less reflows</li>
+            <li class="build"><strong>Clean</strong><br/>Clear, descriptive programming model</li>
+            <li class="build"><strong>Fast</strong><br/>Optimized DOM updates and less reflows</li>
         </ol>
     </section>
+    <section>
+        <h1>... more, and more</h1>
+        <p class="build">Run on NodeJS</p>
+        <p class="build">Java ... via Nashorn JavaScript Engine</p>
+        <p class="build">Optimizations base on application structure</p>
+        <p class="build">Testability for free</p>
+        <p class="build">SVG, VML and ... canvas support</p>
+        <p class="build">Web worker ?</p>
+    </section>
+    <section>
+        <h1>Hold for 5 minutes ...</h1>
+    </section>
+    <section>
+        <h1>The Lifecycle</h1>
+        <ol class="padding-top">
+            <li>Initialization</li>
+            <li>Props change</li>
+            <li>States change</li>
+            <li>Component unmount</li>
+        </ol>
+    </section>
+    <section>
+        <h1>diving deeper</h1>
+    </section>
+    <section>
+        <h1>Initialization</h1>
+        <ol class="padding-top">
+            <li class="build">getDefaultProps</li>
+            <li class="build">getInitialState</li>
+            <li class="build">componentWillMount</li>
+            <li class="build">render</li>
+            <li class="build">componentDidMount</li>
+        </ol>
+    </section>
+    <section>
+        <h1>Props change</h1>
+        <ol class="padding-top">
+            <li class="build">componentWillReceiveProps</li>
+            <li class="build">shouldComponentUpdate</li>
+            <li class="build">componentWillUpdate</li>
+            <li class="build">render</li>
+            <li class="build">componentDidUpdate</li>
+        </ol>
+    </section>
+    <section>
+        <h1>State change</h1>
+        <ol class="padding-top">
+            <li class="build">shouldComponentUpdate</li>
+            <li class="build">componentWillUpdate</li>
+            <li class="build">render</li>
+            <li class="build">componentDidUpdate</li>
+        </ol>
+    </section>
+    <section>
+        <h1>Unmount</h1>
+        <p class="build">componentWillUnmount</p>
+    </section>
+    <section>
+        <h1>Show me the code ...</h1>
+    </section>
+    <section>
+        <h1>Creating a Component</h1>
+        <xmp class="prettyprint">var Header = React.createClass({
+    render: function () {
+        return (
+        <h1>Employee Directory</h1>
+        );
+    }
+});</xmp>
+    </section>
 
+    <section>
+        <h1>Composition</h1>
+        <xmp class="prettyprint">var HomePage = React.createClass({
+    render: function () {
+        return (
+        <div>
+            <Header />
+            <SearchBar />
+            <EmployeeList />
+        </div>
+        );
+    }
+});</xmp>
+    </section>
 
+    <section>
+        <h1>Data Flow</h1>
+        <h2>Parent-to-Child</h2>
+        <ul class="padding-top">
+            <li>Properties passed by the parent are available in <strong>this.props</strong> in the child</li>
+            <li>Properties are immutable</li>
+        </ul>
+    </section>
+
+    <section>
+        <h1>Data Flow</h1>
+        <h2>Parent</h2>
+        <xmp class="prettyprint">var HomePage = React.createClass({
+    render: function () {
+        return (
+        <div>
+            <Header title="Employee Directory"/>
+            <SearchBar/>
+            <EmployeeList/>
+        </div>
+        );
+    }
+});</xmp>
+    </section>
+
+    <section>
+        <h1>Data Flow</h1>
+        <h2>Child</h2>
+        <xmp class="prettyprint">var Header = React.createClass({
+    render: function () {
+        return (
+        <h1>{this.props.title}</h1>
+        );
+    }
+});</xmp>
+    </section>
+
+    <section>
+        <h1>Inverse Data Flow</h1>
+        <h2>Child-to-Parent</h2>
+        <p>Pass event handler has a property</p>
+    </section>
+
+    <section>
+        <h1>Inverse Data Flow</h1>
+        <h2>Parent</h2>
+        <xmp class="prettyprint small">var HomePage = React.createClass({
+    searchHandler:function(key) {
+        alert('Search key: ' + key);
+    },
+    render: function () {
+        return (
+        <div>
+            <Header text="Employee Directory"/>
+            <SearchBar searchHandler={this.searchHandler}/>
+                <EmployeeList/>
+        </div>
+        );
+    }
+});</xmp>
+    </section>
+
+    <section>
+        <h1>Inverse Data Flow</h1>
+        <h2>Child</h2>
+        <xmp class="prettyprint small">var SearchBar = React.createClass({
+    keyChange: function(event) {
+    var searchKey = event.target.value;
+        this.props.searchHandler(searchKey);
+    },
+    render: function () {
+        return (
+        <input type="search" onChange={this.keyChange}/>
+        );
+    }
+});</xmp>
+    </section>
+
+    <section>
+        <h1>State</h1>
+        <h2>Parent</h2>
+        <xmp class="prettyprint small">var HomePage = React.createClass({
+    getInitialState: function() {
+        return {employees: []}
+    },
+    searchHandler: function(key) {
+        this.props.service.findByName(key).then(function(result) {
+            this.setState({searchKey: key, employees: result});
+        }.bind(this));
+    },
+    render: function () {
+        return (
+        <div>
+            <SearchBar searchHandler={this.searchHandler}/>
+                <EmployeeList employees={this.state.employees}/>
+        </div>
+        );
+    }
+});</xmp>
+    </section>
+
+    <section>
+        <h1>State</h1>
+        <h2>Child</h2>
+        <xmp class="prettyprint small">var EmployeeList = React.createClass({
+    render: function () {
+        var items = this.props.employees.map(function (employee) {
+        return (
+        <EmployeeListItem
+                key={employee.id} employee={employee}/>
+            );
+        });
+        return (<ul>{items}</ul>);
+    }
+});</xmp>
+        <p>The key attribute is used to uniquely identify an instance of a component (useful in the diff process)</p>
+    </section>
+
+    <section>
+        <h1>State</h1>
+        <h2>Nested Child</h2>
+        <xmp class="prettyprint small">var EmployeeListItem = React.createClass({
+        render: function () {
+            return (
+            <li>
+                <a href={"#employees/" + this.props.employee.id}>
+                    {this.props.employee.firstName}
+                    {this.props.employee.lastName}
+                </a>
+            </li>
+            );
+        }
+    });</xmp>
+    </section>
     <section>
         <h1>Resources</h1>
         <ul>
@@ -223,7 +377,186 @@ React.render(root, document.getElementById('example'));
             <li><a href="http://coenraets.org/blog/2015/01/belgian-beer-explorer-with-react-bootstrap-node-js-and-postgres/">Beer Explorer</a></li>
             <li><a href="http://coenraets.org/blog/2014/12/sample-mobile-application-with-react-and-cordova/">Employee Directory</a></li>
         </ul>
-    </section> -->
+    </section>
+    <!--< <section>
+         <h1>Separation of Concerns (SoC)</h1>
+         <p>Reduce <strong>coupling</strong>, increase <strong>cohesion</strong></p>
+     </section>
+     <section>
+         <h1>Templates</h1>
+         <p>encourage a poor separation of concerns</p>
+         <p class="build">Angular style directive</p>
+     </section>
+     <section>
+         <h1>View Model</h1>
+         <p>Tightly couples template to display logic</p>
+         <pre class="prettyprint small">[{"price":"69.69", "product":"Raw Oyster", "tableRowColour": "#696969"}]</pre>
+     </section>
+     <section>
+         <h1>Display logic and markup</h1>
+         <p>Inevitably<>tightly coupled</p>
+         <p class="build">highly cohesive</p>
+     </section>
+     <section>
+         <h1>Templates separate <strong>technologies</strong>, not <strong>concerns</strong></h1>
+         <p class="build">And they do it by being deliberately underpowered</p>
+     </section>
+     <section>
+         <h1>Your front-end technology is <strong>underpowered</strong></h1>
+         <p class="build">Reliance on primitive abstractions</p>
+         <p class="build">Inventing lots of new concepts that already exits in JavaScript</p>
+     </section>
+     <section>
+         <h1>Single Source of Truth</h1>
+         <p>Provide data that is authentic, relevant, and referable</p>
+     </section>
+     section>
+         <h1>Traditional MV* Frameworks</h1>
+         <h2>Separation of Concerns</h2>
+         <div class="horizontal padding-top" style="width: 100%">
+             <div>
+                 <div class="box">
+                     Model
+                 </div>
+                 <div class="medium-text" style="text-align: center;width: 100%;color:#62DEFB">Data</div>
+             </div>
+             <div>
+                 <div class="box">
+                     Controller
+                 </div>
+                 <div class="medium-text" style="text-align: center;width: 100%;color:#62DEFB">
+                     Display logic (JavaScript)
+                 </div>
+             </div>
+             <div>
+                 <div class="box">
+                     ModelView
+                 </div>
+                 <div class="medium-text" style="text-align: center;width: 100%;color:#62DEFB">
+                     Tailored Data
+                 </div>
+             </div>
+             <div>
+                 <div class="box">
+                     View
+                 </div>
+                 <div class="medium-text" style="text-align: center;width: 100%;color:#62DEFB">
+                     Templates (HTML + custom extensions)
+                 </div>
+             </div>
+         </div>
+         <p class="build">Controller, ModelView, and View <strong>are</strong> coupled:<br/>when you change one, you often have to change the others</p>
+     </section>
+
+     <section>
+         <table>
+             <tr><td></td><td><strong>Templates</strong></td><td><strong>React Components</strong></td></tr>
+             <tr><td><strong>Separation of Concerns</strong></td><td>Technology<br/><span class="medium-text">(JS, HTML)</span></td><td>Responsibility<br/><span class="medium-text">"Display UI"</span></td></tr>
+             <tr><td><strong>Semantic</strong></td><td>New concepts and micro-languages<br/><span class="medium-text">(scope, directives, iterators)</span></td><td>HTML and JavaScript</td></tr>
+             <tr><td><strong>Expressiveness</strong></td><td>Underpowered</td><td>Full power of JavaScript</td></tr>
+         </table>
+     </section>
+
+
+     <section>
+         <h1>Build components, not templates</h1>
+         <ul class="padding-top">
+             <li>UI Components are the cohesive units</li>
+             <li>UI description and UI logic <strong>are</strong> tightly coupled and can be colocated<br/><span class="medium-text">(They shouldn't be arbitrarily decoupled)</span></li>
+             <li>Full power of JavaScript to express UI</li>
+         </ul>
+     </section>
+
+     <section>
+         <h1>Creating the UI Description</h1>
+ <pre class="prettyprint small">var child1 = React.createElement('li', null, 'First Text Content');
+ var child2 = React.createElement('li', null, 'Second Text Content');
+ var root = React.createElement('ul', { className: 'my-list' }, child1, child2);
+ React.render(root, document.getElementById('example'));
+ </pre>
+     </section>
+
+     <section>
+         <h1>JSX</h1>
+         <ul class="padding-top">
+             <li>Optional HTML-like markup</li>
+             <li>Declarative description of the UI inlined in JS code</li>
+             <li>Combines ease-of-use of templates with power of JavaScript</li>
+             <li>Preprocessor translates to plain JavaScript:
+                 <ul>
+                     <li>On the fly (suitable during development)</li>
+                     <li>Offline using the React CLI</li>
+                 </ul>
+             </li>
+         </ul>
+     </section>
+
+     <section>
+         <h1>JSX</h1>
+         <xmp class="prettyprint" style="margin-top:2rem;">var Header = React.createClass({
+             render: function () {
+             return (
+             <h1>Employee Directory</h1>
+             );
+             }
+             });</xmp>
+     </section>
+
+     <section>
+         <h1>Traditional Performance Best Practices</h1>
+         <ul class="padding-top">
+             <li>Avoid expensive DOM operations</li>
+             <li>Minimize access to the DOM</li>
+             <li>Update elements offline before reinserting into the DOM</li>
+             <li>Avoid tweaking layouts in JavaScript</li>
+         </ul>
+     </section>
+
+     <section>
+         <h2>But should the app developer be responsible for low-level DOM optimizations?</h2>
+     </section>
+
+     <section>
+         <h1>React</h1>
+         <h2 class="padding-top">Re-render everything on every update</h2>
+     </section>
+
+     <section>
+         <h1>Sounds Expensive?</h1>
+     </section>
+
+     <section>
+         <h1>Virtual DOM</h1>
+         <p>Re-render everything on every update:</p>
+         <ol>
+             <li class="build">Create lightweight description of component UI</li>
+             <li class="build">Diff it with the old one</li>
+             <li class="build">Compute minimal set of changes to apply to the DOM</li>
+             <li class="build">Batch execute all updates</li>
+         </ol>
+     </section>
+
+     <section>
+         <h1>Virtual DOM Benefits</h1>
+         <ol class="padding-top">
+             <li><strong>Clean</strong><br/>Clear, descriptive programming model</li>
+             <li><strong>Fast</strong><br/>Optimized DOM updates and less reflows</li>
+         </ol>
+     </section>
+
+
+     <section>
+         <h1>Resources</h1>
+         <ul>
+             <li><a href="https://facebook.github.io/react/docs/tutorial.html">React Tutorial</a></li>
+             <li><a href="https://www.youtube.com/watch?v=x7cQ3mrcKaY">Rethinking best practices</a></li>
+             <li><a href="https://www.youtube.com/watch?v=h3KksH8gfcQ">Secrets of the Virtual DOM</a></li>
+             <li><a href="https://facebook.github.io/react/docs/thinking-in-react.html">Thinking in React</a></li>
+             <li><a href="http://coenraets.org/blog/2015/03/real-time-trader-desktop-with-react-node-js-and-socket-io/">Trader Desktop</a></li>
+             <li><a href="http://coenraets.org/blog/2015/01/belgian-beer-explorer-with-react-bootstrap-node-js-and-postgres/">Beer Explorer</a></li>
+             <li><a href="http://coenraets.org/blog/2014/12/sample-mobile-application-with-react-and-cordova/">Employee Directory</a></li>
+         </ul>
+     </section> -->
 
     <section>
         <h1>Thank You!</h1>
