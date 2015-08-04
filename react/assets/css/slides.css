@@ -9,6 +9,14 @@
     z-index: 1;
 }
 
+.slide-menu {
+    position: absolute;
+    top:12px;
+    right: 13px;
+    z-index: 1;
+}
+
+
 .contact-wrapper {
     overflow: auto !important;
     -webkit-overflow-scrolling: touch !important;
