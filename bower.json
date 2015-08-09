@@ -16,6 +16,8 @@
     "tests"
   ],
   "dependencies": {
-    "reveal-js": "~2.6.2"
+    "jquery": "~2.1.4",
+    "tabletop": "~1.4.2",
+    "sheetsee": "~1.0.0"
   }
 }
