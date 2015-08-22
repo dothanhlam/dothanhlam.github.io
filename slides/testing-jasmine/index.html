@@ -1,0 +1,436 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <title>Testing with Jasmine</title>
+    <link href="assets/css/ionic.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/keypoint.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/prettify.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/slides.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+
+<div id="menu-btn" class="slide-menu icon ion-navicon"></div>
+
+<div id="wrapper"></div>
+
+<div id="slides">
+    <section>
+        <img src="assets/image/jasmine.svg" style="max-height: 30%"/>
+        <h1>Introduction to Jasmine</h1>
+        <p>@dothanhlam</p>
+    </section>
+
+    <section class="bg">
+        <h1>About</h1>
+        <img src="assets/image/gravatar.jpeg" style="width:150px;height:150px;border-radius:50%"/>
+        <div class="speaker-info">
+            <p><i class="icon ion-person"></i>Lam Do</p>
+            <p><i class="icon ion-location"></i>Ho Chi Minh City, Vietnam</p>
+            <p><i class="icon ion-social-twitter"></i>@dothanhlam</p>
+            <p><i class="icon ion-social-rss"></i>http://dothanhlam.wordpress.com</p>
+            <p><i class="icon ion-social-github"></i>https://github.com/dothanhlam</p>
+        </div>
+    </section>
+    <section>
+        <h1>Concepts</h1>
+        <p>What is Unit Testing</p>
+        <p class="build">Benefit</p>
+        <p class="build">Limitation</p>
+    </section>
+    <section>
+        <h1>What is unit ?</h1>
+        <ul>
+            <li>The smallest testable part of an application.</li>
+            <li class="build">Individually and independently for proper operation.</li>
+            <li class="build">Functions, classes, procedures, interfaces are considered as units</li>
+        </ul>
+    </section>
+    <section>
+        <h1>What is testing ?</h1>
+        <p>An investigation conducted to provide stakeholders with information about the quality of the product or service under test.</p>
+    </section>
+    <section>
+        <h1>Unit Testing</h1>
+        <p>Unit testing is a method by which individual units of source code are tested to determine if they are fit for use.</p>
+    </section>
+    <section>
+        <h1>Unit Testing mindset</h1>
+        <p>Written and executed by software developers</p>
+        <p class="build">Isolate each part of the program and test that the individual parts are working correctly</p>
+    </section>
+    <section>
+        <h1>Benefit</h1>
+        <p>Issues are found at early stage</p>
+        <p class="build">Easy for maintaining and changing the code</p>
+        <p class="build">Integration testing is easier</p>
+        <p class="build">Acts as documentation of the system.</p>
+        <p class="build">Reducing the cost of bug fixes</p>
+        <p class="build">Simplifying the debugging process</p>
+    </section>
+    <section>
+        <h1>Limitation</h1>
+        <ul>
+            <li>Time consuming</li>
+            <li class="build">Hard to set up realistic, useful tests</li>
+            <li class="build">Integration errors or system errors can be missed</li>
+            <li class="build">Need to have a review process for test case failures</li>
+            <li class="build">Test code is likely to be at least as buggy as the code it is testing</li>
+            <li class="build">Value and accuracy of unit tests can be diminished if initial conditions are not set correctly</li>
+        </ul>
+    </section>
+    <section>
+        <h1>Take an example</h1>
+        <p class="build">FizzBuzz - a common coding exercise in job interviews</p>
+    </section>
+    <section>
+        <h1>FizzBuzz</h1>
+        <ul>
+            <li class="build">If a number is divisible by 3 return "Fizz"</li>
+            <li class="build">If a number is divisible by 5 return "Buzz"</li>
+            <li class="build">If a number is divisible by 3 and 5 return "FizzBuzz"</li>
+        </ul>
+    </section>
+    <section>
+        <h1>Writing Specs</h1>
+        <xmp class="prettyprint small">expect( fizzBuzz( 3 ) ).toEqual( 'Fizz' );</xmp>
+        <xmp class="prettyprint small">expect( fizzBuzz( 5 ) ).toEqual( 'Buzz' );</xmp>
+        <xmp class="prettyprint small">expect( fizzBuzz( 15 ) ).toEqual( 'FizzBuzz' );</xmp>
+    </section>
+    <section>
+        <h1>fizzBuzz implementation</h1>
+        <xmp class="prettyprint small">var fizzBuzz : function( test ){
+    if ( test % 3 === 0 ){
+        return 'Fizz';
+    }
+    return '';
+}
+        </xmp>
+    </section>
+    <section>
+        <h1>Refactor</h1>
+        <xmp class="prettyprint small">var fizzBuzz : function( test ){
+    if ( test % 3 === 0 ){
+    return 'Fizz';
+    }
+    else if ( test % 5 === 0 ){
+    return 'Buzz';
+    }
+    else if ( test % 3 === 0 && test % 5 === 0 ){
+    return 'FizzBuzz';
+    }
+    return '';
+}
+        </xmp>
+    </section>
+    <section>
+        <h1>Writing <strong>testable</strong> JavaScript code</h1>
+    </section>
+    <section>
+        <h1><strong>Not</strong> testable code</h1>
+        <xmp class="prettyprint small">
+$(document).ready(function(){
+    var div1 = $('div.one'),
+    itemCount = getItemCount( 'li.item' );
+
+    div1.on('click',function(){
+    // do something
+    });
+
+    function getItemCount( selector ){
+        return $( selector ).length;
+    }
+});
+        </xmp>
+    </section>
+    <section>
+        <h1>Why ?</h1>
+        <xmp class="prettyprint small">$(document).ready(function(){ ... });</xmp>
+        <p class="build">All the code is hidden in the $(document).ready() closure.</p>
+        <xmp class="prettyprint small build">div1.on('click',function(){ ...});</xmp>
+        <p class="build">The event handler is anonymous function passed directly into the on function.</p>
+    </section>
+    <section>
+        <h1>Refactor for more testable</h1>
+        <xmp class="prettyprint small">
+var app = {
+    init : function(){
+        div1.on( 'click', this.handleDivClick );
+        this.itemCount = this.getItemCount( 'li.item' );
+    },
+
+    getItemCount : function( selector ){
+        return $( selector ).length;
+    },
+
+    handleDivClick : function( e ){
+        //this in here will still be div1
+    }
+};
+        </xmp>
+    </section>
+    <section>
+        <h1>Why is it more testable?</h1>
+        <p>init set the click handler
+        <p class="build">init set the item count</p>
+        <p class="build">getItemCount() returns what we expect</p>
+        <p class=" build">handleDivClick() does what we want</p>
+    </section>
+    <section>
+        <img src="assets/image/jasmine.svg" style="max-height: 30%"/>
+        <h1 class="hide">Jasmine</h1>
+        <p class="build">framework for testing JavaScript code</p>
+    </section>
+    <section>
+        <h1>Test Suites</h1>
+        <ul>
+        <li class="build">Describe Your Tests</li>
+        <li class="build">Begin with a call to the global Jasmine function <strong>describe</strong></li>
+        <li class="build">Pass with two parameters: a string and a function</li>
+        </ul>
+    </section>
+    <section>
+        <h1>Example of Test Suite</h1>
+        <xmp class="prettyprint small">
+
+describe('fizzbuzz - A suite is just a function'){
+
+    it('should return fizz when the number is divisible by 3',
+        function(){
+            expect(fizzBuzz(3)c).toEqual('Fizz'); //matcher
+            expect(fizzBuzz(0)).toEqual( '' );
+    });
+});
+            </xmp>
+    </section>
+    <section>
+        <h1>Specs</h1>
+        <ul>
+            <li class="build">Spec files are where your tests live</li>
+            <li class="build">Typically a single spec will be written for each .js file in your app</li>
+            <li class="build">To be defined by calling the global Jasmine function <strong>it</strong></li>
+            <li class="build">Pass with two parameters: a string and a function</li>
+        </ul>
+    </section>
+    <section>
+        <h1>Specs ... more</h1>
+        <ul>
+            <li class="build">A spec contains expectations that test the state of the code</li>
+            <li class="build">A spec with all true expectations is a passing spec</li>
+            <li class="build">A spec with one or more false expectations is a failing spec</li>
+        </ul>
+    </section>
+    <section>
+        <h1>Example</h1>
+        <xmp class="prettyprint small">
+it('should return fizz when the number is divisible by 3',
+    function(){
+        expect(fizzBuzz(3)c).toEqual('Fizz'); //matcher
+        expect(fizzBuzz(0)).toEqual( '' );
+    }
+);
+        </xmp>
+    </section>
+    <section>
+        <h1>Test Setup & Teardown</h1>
+        <xmp class="prettyprint small">
+beforeEach( function (){
+    //run before each "it"
+});
+
+afterEach( function (){
+    //run after each "it"
+});
+        </xmp>
+    </section>
+    <section>
+        <h1>Expectation</h1>
+        <p class="build">Are built with the function expect which takes a value, called the actual</p>
+        <p class="build">It is chained with a Matcher function, which takes the expected value</p>
+    </section>
+    <section>
+        <h1>Matcher</h1>
+        <p class="build">Implements a boolean comparison between the actual value and the expected value</p>
+        <p class="build">Responsible for reporting to Jasmine if the expectation is <strong>true</strong> or <strong>false</strong></p>
+    </section>
+    <section>
+        <h1>Matchers</h1>
+    </section>
+    <section>
+        <h1>Matchers - toBe and toEqual</h1>
+        <xmp class="prettyprint small">toBe( 'expected' ) //exact compare (===)</xmp>
+        <xmp class="prettyprint small">toEqual( 'expected' ) //more general compare, can compare objects</xmp>
+    </section>
+    <section>
+        <h1>Matchers - toBeUndefined and toBeDefined</h1>
+        <xmp class="prettyprint small">toBeUndefined( ) //checks for undefined</xmp>
+        <xmp class="prettyprint small">toBeDefined( ) //checks if var is not undefined</xmp>
+    </section>
+    <section>
+        <h1>Matchers - toMatch and toBeNull</h1>
+        <xmp class="prettyprint small">toMatch( /regex/ ) //matches against regex</xmp>
+        <xmp class="prettyprint small">toBeNull( /regex/ ) //checks if a var is null</xmp>
+    </section>
+    <section>
+        <h1>Matchers - toBeTruthy and toBeFalsy</h1>
+        <xmp class="prettyprint small">toBeTruthy( ) //checks if var is truthy</xmp>
+        <xmp class="prettyprint small">toBeFalsy( ) //checks if var is falsy</xmp>
+    </section>
+    <section>
+        <h1>Matchers - toBeLessThan and toBeGreaterThan</h1>
+        <xmp class="prettyprint small">toBeLessThan( number ) //checks if value is less than number</xmp>
+        <xmp class="prettyprint small">toBeGreaterThan( number ) //checks if value is greater than number</xmp>
+    </section>
+    <section>
+        <h1>Matchers - toContain and toThrow</h1>
+        <xmp class="prettyprint small">toContain( item ) //look for item in array</xmp>
+       <xmp class="prettyprint small">expect( function(){ fn(); }).toThrow( e ) //fn() should throw an error</xmp>
+    </section>
+    <section>
+        <h1>Matchers - not</h1>
+        <p>Any matcher can be "reversed" by including the not keyword.</p>
+        <xmp class="prettyprint small">expect( 5 ).not.toEqual( 3 );</xmp>
+    </section>
+    <section>
+        <h1>runs/waits</h1>
+    </section>
+    <section>
+        <h1 class="hide">runs/waits purpose</h1>
+        <p>What if you have code like this?</p>
+        <xmp class="prettyprint small">
+hide : function(){
+    $('.hidden').slideDown(5000);
+}
+        </xmp>
+    </section>
+    <section>
+        <h1 class="hide">Jasmine provides runs/waits for this</h1>
+        <xmp class="prettyprint small">
+runs(
+    function(){
+        myObject.hide();
+    });
+
+    waits( 5100 );
+
+    runs( function(){
+        expect( $('.hidden') ).not.toBeVisible();
+    }
+);
+        </xmp>
+    </section>
+    <section>
+        <h1>runs/waits purposes</h1>
+        <p class="build">When you have runs / waits functions Jasmine runs the first function, waits the duration of the waits function call, then calls the next runs function.</p>
+        <p class="build">Good for jQuery animations, setTimeouts, setIntervals, or any other asynchronous and timed code.</p>
+    </section>
+    <section>
+        <h1>Spies</h1>
+    </section>
+    <section>
+        <h1>What are spies ?</h1>
+        <p class="build">Spies are utilities provided by jasmine to make sure a callback function has been called.</p>
+    </section>
+    <section>
+        <h1>How to use Spies</h1>
+        <p>To use it we tell Jasmine to spyOn something</p>
+        <p>By default they are similar to mocks in other unit testing frameworks</p>
+        <xmp class="prettyprint small">
+it('must call the success callback',
+    function(){
+        //overwrites showOtherDiv with the spy
+        spyOn( myObj, 'showOtherDiv' );
+
+        expect( myObj.showOtherDiv ).toHaveBeenCalled();
+    }
+);
+        </xmp>
+    </section>
+    <section>
+        <h1>Spy Matchers</h1>
+        <xmp class="prettyprint small">
+expect( myObj.showOtherDiv ).toHaveBeenCalled();
+//validates that the method was called
+        </xmp>
+        <xmp class="prettyprint small">
+expect( myObj.showOtherDiv ).toHaveBeenCalledWith( args );
+//validates that the method was called with specific arguments
+        </xmp>
+    </section>
+    <section>
+        <h1>Spy Metadata</h1>
+        <xmp class="prettyprint small">
+myObj.showOtherDiv.calls.length //number of times called
+        </xmp>
+        <xmp class="prettyprint small">
+myObj.showOtherDiv.mostRecentCall
+//get last call, has same metadata as other calls
+        </xmp>
+    </section>
+    <section>
+        <h1>Jasmine integration</h1>
+        <img src="assets/image/grunt-and-phantomjs.png" style="height: 30%"/>
+    </section>
+    <section>
+        <h1>Installing commands</h1>
+        <xmp class="prettyprint small">
+$ cd /path/to/project
+$ npm install grunt
+$ npm install grunt-jasmine-runner
+            </xmp>
+        <p>If you’re on a Mac and use Homebrew you can grab PhantomJS:</p>
+        <xmp class="prettyprint small">
+$ brew install phantomjs
+        </xmp>
+    </section>
+    <section>
+        <h1>Configuration to a gruntfile.js</h1>
+        <xmp class="prettyprint small">
+module.exports = function(grunt) {
+    grunt.initConfig({
+        jasmine : {
+        // Your project's source files
+        src : 'src/**/*.js',
+        // Your Jasmine spec files
+        specs : 'specs/**/*spec.js',
+        // Your spec helper files
+        helpers : 'specs/helpers/*.js'
+    }
+});
+
+// Register tasks.
+grunt.loadNpmTasks('grunt-jasmine-runner');
+
+// Default task.
+grunt.registerTask('default', 'jasmine');
+};
+        </xmp>
+    </section>
+    <section>
+        <h1>Questions</h1>
+    </section>
+</div> <!-- end of '#slides' -->
+
+<!--<button id="menu-btn" class="button button-clear icon ion-navicon"></button>-->
+
+<div id="menu" class="dark-bg">
+    <div class="title">Keypoint</div>
+    <div class="scroller cf">
+        <ol id="list" class="list"></ol>
+    </div>
+</div>
+
+<div id="build-btn-right" style="position: absolute;bottom:0; right:0; width: 150px; height: 150px;border:solid 0px;z-index:100;"></div>
+<div id="build-btn-left" style="position: absolute;bottom:0; left:0; width: 150px; height: 150px;border:solid 0px;z-index:100"></div>
+
+<script src="../common/lib/jquery.js"></script>
+<script src="../common/lib/fastclick.js"></script>
+<script src="../common/lib/prettify.js"></script>
+<script src="../common/lib/swipeview.js"></script>
+<script src="../common/js/keypoint.js"></script>
+
+</body>
+</html>
