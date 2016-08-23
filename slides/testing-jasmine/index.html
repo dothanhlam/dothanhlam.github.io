@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-    <title>Testing with Jasmine</title>
+    <title>Unit testing - Jasmine</title>
     <link href="assets/css/ionic.css" rel="stylesheet" type="text/css">
     <link href="assets/css/keypoint.css" rel="stylesheet" type="text/css">
     <link href="assets/css/prettify.css" rel="stylesheet" type="text/css">
@@ -37,13 +37,13 @@
     </section>
     <section>
         <h1>Concepts</h1>
-        <p>What is Unit Testing</p>
+        <p class="build">What is Unit Testing</p>
         <p class="build">Benefit</p>
         <p class="build">Limitation</p>
     </section>
     <section>
         <h1>What is unit ?</h1>
-        <ul>
+        <ul class="build">
             <li>The smallest testable part of an application.</li>
             <li class="build">Individually and independently for proper operation.</li>
             <li class="build">Functions, classes, procedures, interfaces are considered as units</li>
@@ -51,20 +51,20 @@
     </section>
     <section>
         <h1>What is testing ?</h1>
-        <p>An investigation conducted to provide stakeholders with information about the quality of the product or service under test.</p>
+        <p class="build">An investigation conducted to provide stakeholders with information about the quality of the product or service under test.</p>
     </section>
     <section>
         <h1>Unit Testing</h1>
-        <p>Unit testing is a method by which individual units of source code are tested to determine if they are fit for use.</p>
+        <p class="build">Unit testing is a method by which individual units of source code are tested to determine if they are fit for use.</p>
     </section>
     <section>
-        <h1>Unit Testing mindset</h1>
-        <p>Written and executed by software developers</p>
+        <h1>Unit Testing - The mindset</h1>
+        <p class="build">Written and executed by software developers</p>
         <p class="build">Isolate each part of the program and test that the individual parts are working correctly</p>
     </section>
     <section>
-        <h1>Benefit</h1>
-        <p>Issues are found at early stage</p>
+        <h1>Benefits</h1>
+        <p class="build">Issues are found at early stage</p>
         <p class="build">Easy for maintaining and changing the code</p>
         <p class="build">Integration testing is easier</p>
         <p class="build">Acts as documentation of the system.</p>
@@ -73,14 +73,12 @@
     </section>
     <section>
         <h1>Limitation</h1>
-        <ul>
-            <li>Time consuming</li>
-            <li class="build">Hard to set up realistic, useful tests</li>
-            <li class="build">Integration errors or system errors can be missed</li>
-            <li class="build">Need to have a review process for test case failures</li>
-            <li class="build">Test code is likely to be at least as buggy as the code it is testing</li>
-            <li class="build">Value and accuracy of unit tests can be diminished if initial conditions are not set correctly</li>
-        </ul>
+        <p class="build">Time consuming</p>
+        <p class="build">Hard to set up realistic, useful tests</p>
+        <p class="build">Integration errors or system errors can be missed</p>
+        <p class="build">Need to have a review process for test case failures</p>
+        <p class="build">Test code is likely to be at least as buggy as the code it is testing</p>
+        <p class="build">Value and accuracy of unit tests can be diminished if initial conditions are not set correctly</p>
     </section>
     <section>
         <h1>Take an example</h1>
@@ -96,9 +94,18 @@
     </section>
     <section>
         <h1>Writing Specs</h1>
-        <xmp class="prettyprint small">expect( fizzBuzz( 3 ) ).toEqual( 'Fizz' );</xmp>
-        <xmp class="prettyprint small">expect( fizzBuzz( 5 ) ).toEqual( 'Buzz' );</xmp>
-        <xmp class="prettyprint small">expect( fizzBuzz( 15 ) ).toEqual( 'FizzBuzz' );</xmp>
+        <span class="build">
+            If a number is divisible by 3 return "Fizz"
+            <xmp class="prettyprint small">expect( fizzBuzz( 3 ) ).toEqual( 'Fizz' );</xmp>
+        </span>
+        <span class="build">
+            If a number is divisible by 5 return "Buzz"
+            <xmp class="prettyprint small">expect( fizzBuzz( 5 ) ).toEqual( 'Buzz' );</xmp>
+        </span>
+        <span class="build">
+            If a number is divisible by 5 return "Buzz"
+            <xmp class="prettyprint small">expect( fizzBuzz( 15 ) ).toEqual( 'FizzBuzz' );</xmp>
+        </span>
     </section>
     <section>
         <h1>fizzBuzz implementation</h1>
@@ -125,6 +132,11 @@
     return '';
 }
         </xmp>
+    </section>
+    <section>
+        <h1>Almost done, but it' a trap</h1>
+        <img src="assets/image/trap.jpg">
+        <p>The code does not work as expectation! <a target="_blank" href="http://learnjswith.me/javascript-fizzbuzz/">You know why</a></p>
     </section>
     <section>
         <h1>Writing <strong>testable</strong> JavaScript code</h1>
