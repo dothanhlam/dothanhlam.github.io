@@ -1,0 +1,41 @@
+@font-face {
+    font-family: "Source Sans";
+    src: url("../../../common/assets/fonts/SourceSansPro-Regular.otf");
+}
+
+@font-face {
+    font-family: "Source Sans Light";
+    src: url("../../../common/assets/fonts/SourceSansPro-Light.otf");
+    font-weight: 200;
+}
+
+@font-face {
+    font-family: "Source Sans";
+    src: url("../../../common/assets/fonts/SourceSansPro-Semibold.otf");
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: "Source Code";
+    src: url("../../../common/assets/fonts/SourceCodePro-Regular.otf");
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    font-family: "Source Sans Light", helvetica, arial, sans-serif;
+    font-size: 1rem;
+    margin: 0;
+    padding: 0;
+    color: #fff;
+    background: darkslategrey;
+    border-bottom: solid 4px darkgrey;
+}
+
+p {
+    margin: 1rem;
+    font-size: 1rem;
+    line-height: 1.4rem;
+}
